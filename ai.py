@@ -1,14 +1,18 @@
 import requests
 import json
+import os
+from dotenv import load_dotenv
 
-COHERE_API_KEY = "bf5Qur8XrFgfmiAoU0KL111qbVud0P2KGQFZvdW8"
+load_dotenv()
+COHERE_API_KEY = os.getenv("bf5Qur8XrFgfmiAoU0KL111qbVud0P2KGQFZvdW8")
 
-def extract_data(text):
+def extract_transaction(text):
     prompt = f"""
-Extract transaction info as JSON.
-Text: {text}
+Extract transaction info as JSON from the message:
 
-Return format:
+{text}
+
+Return JSON ONLY:
 {{
   "item": "",
   "customer": "",
